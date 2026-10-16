@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { CalendarDays, Check, MessageCircle, PauseCircle, RefreshCcw, Sparkles } from "lucide-react";
+import { CalendarDays, Check, Gift, MessageCircle, Minus, PauseCircle, Plus, RefreshCcw, Sparkles, Users } from "lucide-react";
 import { brand, inr, waLink } from "@/lib/brand";
 import { milkPrices, type MilkType } from "@/lib/data";
 import { MilkBottle } from "./Illustrations";
@@ -14,10 +14,13 @@ const FREQS: { id: Freq; label: string; hint: string }[] = [
   { id: "custom", label: "Custom days", hint: "Pick weekdays" },
 ];
 const MONTHLY_DISCOUNT = 0.15;
+/** Rough guide: about 250 ml a day per family member, rounded to the nearest half litre. */
+const suggestLitres = (members: number) => Math.max(0.5, Math.round(members * 0.25 * 2) / 2);
 
 export function PlanBuilder() {
   const [type, setType] = useState<MilkType>("cow");
-  const [qty, setQty] = useState(1);
+  const [members, setMembers] = useState(4);
+  const [qty, setQty] = useState(suggestLitres(4));
   const [freq, setFreq] = useState<Freq>("daily");
   const [days, setDays] = useState<number[]>([0, 2, 4, 6]);
   const [monthly, setMonthly] = useState(true);
@@ -28,13 +31,18 @@ export function PlanBuilder() {
   const gross = perDelivery * deliveries;
   const saving = monthly ? Math.round(gross * MONTHLY_DISCOUNT) : 0;
   const total = gross - saving;
+  const trialSaving = monthly ? brand.trialPrice : 0;
+  const changeMembers = (m: number) => {
+    setMembers(m);
+    setQty(suggestLitres(m));
+  };
 
   const toggleDay = (d: number) =>
     setDays((cur) => (cur.includes(d) ? (cur.length > 1 ? cur.filter((x) => x !== d) : cur) : [...cur, d].sort()));
 
   const schedule =
     freq === "custom" ? days.map((d) => WEEKDAYS[d]).join(", ") : FREQS.find((f) => f.id === freq)!.label;
-  const message = `Hi ${brand.name}! I'd like to start a subscription:\n• ${milkPrices[type].name}, ${qty} L\n• ${schedule} (${deliveries} deliveries/month)\n• ${monthly ? "Monthly prepaid (15% off)" : "Pay per delivery"}\n• Estimated ${inr(total)}/month`;
+  const message = `Hi ${brand.name}! I'd like to start a subscription:\n• ${milkPrices[type].name}, ${qty} L\n• ${schedule} (${deliveries} deliveries/month)\n• Family of ${members}\n• ${monthly ? "Monthly prepaid (15% off) + free trial pack" : "Pay per delivery"}\n• Estimated ${inr(total)}/month`;
 
   return (
     <section id="plan" className="relative overflow-hidden bg-forest py-20 text-cream sm:py-28">
@@ -91,7 +99,7 @@ export function PlanBuilder() {
                   >
                     <MilkBottle
                       className="h-16 w-7 shrink-0"
-                      {...(m === "buffalo" ? { milk: "#FFF7E2", cap: "#2D6A4F", label: "A+", sub: "BUFFALO", level: 100 } : {})}
+                      {...(m === "buffalo" ? { milk: "#FFF7E2", cap: "#2E7D32", label: "A+", sub: "BUFFALO", level: 100 } : {})}
                     />
                     <span className="min-w-0">
                       <span className="block font-semibold leading-tight text-forest">
@@ -105,24 +113,52 @@ export function PlanBuilder() {
             </div>
           </fieldset>
 
-          <fieldset className="mt-6">
-            <legend className="text-sm font-semibold text-forest">2. Select daily quantity</legend>
-            <div className="mt-3 grid grid-cols-3 gap-3">
-              {[1, 2, 3].map((q) => (
-                <button
-                  key={q}
-                  type="button"
-                  aria-pressed={qty === q}
-                  onClick={() => setQty(q)}
-                  className={`num rounded-xl border-2 py-3 font-display text-xl transition ${
-                    qty === q ? "border-forest bg-forest text-cream" : "border-forest/10 text-forest hover:border-forest/30"
-                  }`}
-                >
-                  {q} L
-                </button>
-              ))}
+          <div className="mt-6">
+            <div className="flex items-center justify-between gap-3">
+              <label htmlFor="members" className="text-sm font-semibold text-forest">
+                2. Family members
+              </label>
+              <span className="num inline-flex items-center gap-1.5 rounded-full bg-forest/[0.06] px-3 py-1 text-sm font-semibold text-forest">
+                <Users className="h-4 w-4" aria-hidden /> {members} {members === 1 ? "person" : "people"}
+              </span>
             </div>
-          </fieldset>
+            <input
+              id="members"
+              type="range"
+              min={1}
+              max={10}
+              value={members}
+              onChange={(e) => changeMembers(Number(e.target.value))}
+              aria-valuetext={`${members} family members`}
+              className="mt-3 w-full cursor-pointer accent-forest"
+            />
+            <div className="mt-4 flex items-center justify-between gap-3 rounded-2xl border-2 border-forest/10 p-3">
+              <span className="text-sm text-earth/70">
+                Daily milk <span className="block text-xs text-earth/50">Suggested ~250 ml per person</span>
+              </span>
+              <span className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => setQty((q) => Math.max(0.5, q - 0.5))}
+                  aria-label="Less milk"
+                  className="grid h-9 w-9 place-items-center rounded-full border border-forest/15 text-forest hover:bg-forest/5"
+                >
+                  <Minus className="h-4 w-4" />
+                </button>
+                <span className="num w-16 text-center font-display text-2xl text-forest" aria-live="polite">
+                  {qty} L
+                </span>
+                <button
+                  type="button"
+                  onClick={() => setQty((q) => Math.min(6, q + 0.5))}
+                  aria-label="More milk"
+                  className="grid h-9 w-9 place-items-center rounded-full border border-forest/15 text-forest hover:bg-forest/5"
+                >
+                  <Plus className="h-4 w-4" />
+                </button>
+              </span>
+            </div>
+          </div>
 
           <fieldset className="mt-6">
             <legend className="text-sm font-semibold text-forest">3. Select frequency</legend>
@@ -171,7 +207,7 @@ export function PlanBuilder() {
             className="mt-6 flex w-full items-center justify-between gap-4 rounded-2xl bg-ghee-light/25 px-4 py-3.5 text-left"
           >
             <span>
-              <span className="block font-semibold text-forest">Save 15% on Monthly Subscription</span>
+              <span className="block font-semibold text-forest">Save 15% + get the Trial Pack FREE</span>
               <span className="text-sm text-earth/70">Prepay for the month, pause days are credited back</span>
             </span>
             <span
@@ -195,10 +231,16 @@ export function PlanBuilder() {
               </div>
               {saving > 0 && (
                 <span className="num inline-flex items-center gap-1.5 rounded-full bg-forest/10 px-3 py-1 text-sm font-semibold text-forest">
-                  <Check className="h-4 w-4" /> You save {inr(saving)}
+                  <Check className="h-4 w-4" /> You save {inr(saving + trialSaving)}
                 </span>
               )}
             </div>
+            {trialSaving > 0 && (
+              <p className="num mt-3 flex items-center gap-2 rounded-xl bg-ghee-light/30 px-3 py-2 text-sm font-medium text-earth">
+                <Gift className="h-4 w-4 shrink-0 text-ghee-dark" aria-hidden />
+                Free 3-Day Trial Pack included, worth {inr(trialSaving)}
+              </p>
+            )}
             <dl className="num mt-4 grid grid-cols-3 gap-3 border-t border-forest/10 pt-4 text-sm">
               <div>
                 <dt className="text-earth/60">Per delivery</dt>

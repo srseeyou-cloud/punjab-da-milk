@@ -24,8 +24,8 @@ npm run preview      # optional: single-file preview at preview/index.html
 - `lib/brand.ts` — brand name, domain, phone, WhatsApp, FSSAI, address, rating, socials. **Only place these live.**
 - `lib/data.ts` — prices, products, lab batches, testimonials, FAQs, pin codes.
 - `components/*.tsx` — one file per section. `Illustrations.tsx` holds all SVG art (bottles, ghee pot, logo).
-- `tailwind.config.ts` — colour tokens: `forest` (#1B4332 / #2D6A4F), `cream` (#FDFCF7 / #FAF6ED),
-  `ghee` (#D4A373 / #E9C46A), `ink`, `earth`. Fonts: Fraunces (`font-display`), Plus Jakarta Sans (`font-sans`).
+- `tailwind.config.ts` — colour tokens: `forest` (#1B5E20 / #2E7D32), `cream` (#FFFEFA / #FFF8E1),
+  `ghee` (#F9A825 / #FFD54F), `ink`, `earth`. Fonts: Fraunces (`font-display`), Plus Jakarta Sans (`font-sans`).
 
 ## Rules
 

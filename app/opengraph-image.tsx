@@ -17,17 +17,17 @@ export default function OpengraphImage() {
           flexDirection: "column",
           justifyContent: "space-between",
           padding: 72,
-          background: "#1B4332",
+          background: "#1B5E20",
           color: "#FDFCF7",
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: 20, fontSize: 40 }}>
-          <div style={{ width: 64, height: 64, borderRadius: 32, background: "#E9C46A" }} />
+          <div style={{ width: 64, height: 64, borderRadius: 32, background: "#FFD54F" }} />
           {brand.name}
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
           <div style={{ fontSize: 76, lineHeight: 1.05, maxWidth: 950 }}>Pure A2 milk, at your door before 7 AM.</div>
-          <div style={{ fontSize: 32, color: "#E9C46A" }}>{brand.shortTagline}</div>
+          <div style={{ fontSize: 32, color: "#FFD54F" }}>{brand.shortTagline}</div>
         </div>
         <div style={{ display: "flex", fontSize: 26, opacity: 0.75 }}>{`Glass bottles · Lab-tested every batch · ${brand.domain}`}</div>
       </div>

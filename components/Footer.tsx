@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { Facebook, Instagram, Mail, MapPin, MessageCircle, ShieldCheck, Youtube } from "lucide-react";
+import { Facebook, Instagram, Mail, MapPin, MessageCircle, Phone, ShieldCheck, Youtube } from "lucide-react";
 import { brand, waLink } from "@/lib/brand";
 import { pincodes } from "@/lib/data";
 import { Logo } from "./Illustrations";
@@ -145,7 +145,14 @@ export function MobileCTA() {
   return (
     <div className="fixed inset-x-0 bottom-0 z-40 border-t border-forest/10 bg-cream/90 px-4 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-3 backdrop-blur-md lg:hidden">
       <div className="mx-auto flex max-w-xl gap-2">
-        <a href="#plan" className="btn-primary flex-1 !py-3 text-sm">
+        <a
+          href={`tel:+${brand.whatsapp}`}
+          aria-label={`Call ${brand.name}`}
+          className="grid h-12 w-12 shrink-0 place-items-center rounded-full border border-forest/20 text-forest"
+        >
+          <Phone className="h-5 w-5" />
+        </a>
+        <a href="#plan" className="btn-primary flex-1 animate-pulse-ring !py-3 text-sm">
           Try 3 days @ ₹{brand.trialPrice}
         </a>
         <a
@@ -159,6 +166,24 @@ export function MobileCTA() {
         </a>
       </div>
     </div>
+  );
+}
+
+/** Desktop only: the phone has the sticky bar above instead. */
+export function FloatingWhatsApp() {
+  return (
+    <a
+      href={waLink(`Hi ${brand.name}, I'd like to order fresh milk.`)}
+      target="_blank"
+      rel="noreferrer"
+      className="group fixed bottom-6 right-6 z-40 hidden items-center gap-2 rounded-full bg-[#25D366] py-3 pl-3 pr-5 font-semibold text-white shadow-lift transition hover:-translate-y-1 lg:inline-flex"
+    >
+      <span className="relative grid h-9 w-9 place-items-center rounded-full bg-white/20">
+        <span className="absolute inset-0 animate-ping rounded-full bg-white/30" aria-hidden />
+        <MessageCircle className="relative h-5 w-5" aria-hidden />
+      </span>
+      Order via WhatsApp
+    </a>
   );
 }
 

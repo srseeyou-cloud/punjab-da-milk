@@ -9,6 +9,15 @@ export const milkPrices: Record<MilkType, { name: string; short: string; perLitr
   buffalo: { name: "Murrah Buffalo Milk", short: "Buffalo", perLitre: 90 },
 };
 
+/* Stock photos from Unsplash (free licence). Replace with real photos of your own farm when you have them. */
+const u = (id: string, w: number) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`;
+
+export const images = {
+  hero: { src: u("1527153857715-3908f2ae5e81", 1600), alt: "Cows grazing on a green farm pasture at sunrise" },
+  milkPour: { src: u("1550583724-b2692b85b150", 800), alt: "Fresh creamy milk being poured into a glass" },
+  farm: { src: u("1500595046743-cd271d694d30", 800), alt: "Clean, open farm where our cattle are raised" },
+};
+
 export type Visual = "cow" | "buffalo" | "ghee" | "paneer" | "dahi";
 
 export const products: {
@@ -22,6 +31,7 @@ export const products: {
   deposit: string;
   note: string;
   tag?: string;
+  image?: { src: string; alt: string };
 }[] = [
   {
     id: "a2-cow",
@@ -33,7 +43,8 @@ export const products: {
     unit: "per litre",
     deposit: "₹50 refundable bottle deposit",
     note: "Light, naturally sweet and easy on the stomach. The one kids ask for.",
-    tag: "Bestseller",
+    tag: "Lab Tested A2",
+    image: { src: u("1528750997573-59b89d56f4f7", 600), alt: "Glass bottle of fresh A2 desi cow milk" },
   },
   {
     id: "buffalo",
@@ -45,7 +56,8 @@ export const products: {
     unit: "per litre",
     deposit: "₹50 refundable bottle deposit",
     note: "Thick malai on top, made for kadak chai, kheer and home-set dahi.",
-    tag: "Thick malai",
+    tag: "Best Seller",
+    image: { src: u("1563636619-e9143da7973b", 600), alt: "Full-cream desi buffalo milk in glass bottles" },
   },
   {
     id: "ghee",
@@ -57,19 +69,21 @@ export const products: {
     unit: "per 500 ml",
     deposit: "No deposit, the pot is yours",
     note: "Curd hand-churned with a wooden bilona, slow-cooked on a wood fire.",
-    tag: "Small batch",
+    tag: "Traditional Bilona",
+    image: { src: u("1628088062854-d1870b4553da", 600), alt: "Golden bilona cow ghee in a jar" },
   },
   {
     id: "paneer",
-    name: "Fresh Malai Paneer",
+    name: "Fresh Malai Paneer & White Makhan",
     visual: "paneer",
     pack: "200 g, leaf-wrapped",
     fat: "~22%",
     price: 140,
     unit: "per 200 g",
     deposit: "₹30 deposit on steel box",
-    note: "Pressed fresh on the morning of delivery. Soft enough to crumble.",
+    note: "Pressed fresh on the morning of delivery, with hand-churned white makhan on request.",
     tag: "Made on order",
+    image: { src: u("1559561853-08451507cbe7", 600), alt: "Soft fresh paneer cubes and white butter" },
   },
   {
     id: "dahi",
@@ -82,31 +96,44 @@ export const products: {
     deposit: "No deposit, kulhad is compostable",
     note: "Set overnight in clay with live cultures. Thick, mildly tangy.",
   },
+  {
+    id: "lassi",
+    name: "Punjabi Sweet Lassi in Kulhad",
+    visual: "dahi",
+    pack: "300 ml clay kulhad",
+    fat: "~3.5%",
+    price: 60,
+    unit: "per kulhad",
+    deposit: "No deposit, kulhad is compostable",
+    note: "Churned thick from our own dahi with a little malai on top. Pind wali lassi.",
+    tag: "New",
+    image: { src: u("1571006682832-72c084e5b98f", 600), alt: "Thick sweet lassi served in a clay kulhad" },
+  },
 ];
 
 export const journey = [
   {
-    time: "All day",
-    title: "Grass-fed & loved",
-    body: "Our Sahiwal cows and Murrah buffaloes graze freely on green fodder grown on our own Punjab fields. No hormone injections, ever.",
+    time: "04:00 AM",
+    title: "Milking with care",
+    body: "Our happy, grass-fed Sahiwal cows and Murrah buffaloes are milked in clean, closed steel lines. No hormone or oxytocin injections, ever.",
     icon: "sprout",
   },
   {
-    time: "4:00 AM",
-    title: "Zero-touch milking",
-    body: "Automated, closed-pipe milking straight into steel. No hand ever touches the milk, and no air or dust gets in.",
-    icon: "shield",
-  },
-  {
-    time: "4:20 AM",
-    title: "Cold chain at 4°C",
-    body: "Within twenty minutes the milk is chilled to 4°C, which stops bacterial growth without boiling or chemicals.",
+    time: "05:00 AM",
+    title: "Chilled to 4°C",
+    body: "The milk is chilled straight away to 4°C. Cold keeps it fresh and preserves natural nutrients without boiling or chemicals.",
     icon: "snow",
   },
   {
-    time: "Before 7:00 AM",
-    title: "At your door",
-    body: "Filled into sterilised glass bottles and left at your door before your morning chai. Empties go back with the delivery partner.",
+    time: "06:00 AM",
+    title: "26+ purity tests",
+    body: "Our on-farm lab checks every batch for fat, SNF, added water, urea, starch, detergent and more. A failed batch never leaves the farm.",
+    icon: "shield",
+  },
+  {
+    time: "07:00 AM",
+    title: "Ringing your doorbell",
+    body: "Sterilised glass bottles reach your door before your morning chai. Yesterday's empties go back with the delivery partner.",
     icon: "truck",
   },
 ] as const;
@@ -177,6 +204,7 @@ export const adulterantTests = [
   "Antibiotic residue",
 ];
 
+/* PLACEHOLDER: sample reviews. Replace with real customer reviews (with their permission) before promoting the site. */
 export const testimonials = [
   {
     name: "Harpreet Kaur",
@@ -221,8 +249,12 @@ export const testimonials = [
 
 export const faqs = [
   {
-    q: "How do glass bottle returns work?",
-    a: "Rinse the empty bottle and leave it outside your door. Your delivery partner picks it up when dropping tomorrow's milk. Each bottle carries a ₹50 refundable deposit, added once with your first order and returned in full when you stop the subscription.",
+    q: "How do glass bottle returns and recycling work?",
+    a: "Rinse the empty bottle and leave it outside your door. Your delivery partner picks it up when dropping tomorrow's milk. Each bottle carries a ₹50 refundable deposit, added once with your first order and returned in full when you stop the subscription. Returned bottles are washed, sterilised and reused, so no plastic ever reaches your home.",
+  },
+  {
+    q: "What time will my milk arrive?",
+    a: `Every morning before ${brand.deliveryCutoff}, in time for your morning chai. If a delivery is ever late, message us on WhatsApp and we will sort it out.`,
   },
   {
     q: "How is this different from plastic pouch milk?",

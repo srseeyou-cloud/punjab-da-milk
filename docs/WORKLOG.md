@@ -17,3 +17,8 @@ Format: `YYYY-MM-DD · tool · branch` then what changed and what's left.
 ## 2026-10-16 · Claude · docs/netlify-live
 - First Netlify production deploy of `main` succeeded (Sourav's Netlify account, free plan). Every merge to `main` now auto-deploys.
 - **Left to do:** connect punjabdamilk.com in Netlify Domain management + registrar DNS, replace PLACEHOLDERs (WhatsApp, FSSAI first).
+
+## 2026-10-16 · Claude · feat/redesign
+- Premium redesign on Sourav's brief: grass-green / butter-yellow palette (tokens in tailwind.config.ts), photo hero with new Hinglish headline, announcement bar "First Trial Pack FREE on 1st Monthly Subscription", trust counter cards (`TrustStats.tsx`), interactive 04:00–07:00 AM farm timeline, family-size slider in the plan calculator, product photos + quick-view subscribe popup (native `<dialog>`), lassi product, avatar review cards, new FAQ on delivery time, floating WhatsApp (desktop) and call button in the mobile bar.
+- Photos are Unsplash URLs in `lib/data.ts`; `Photo.tsx` falls back to the SVG art if one fails to load.
+- **Left to do:** real photos, WhatsApp/FSSAI/address/prices, real reviews (all still PLACEHOLDER).
