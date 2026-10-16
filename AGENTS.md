@@ -40,7 +40,7 @@ npm run preview      # optional: single-file preview at preview/index.html
 
 ## Git workflow
 
-- `main` is what goes live (Vercel deploys it). Never push straight to `main`.
+- `main` is what goes live (Netlify deploys it automatically on every merge). Never push straight to `main`.
 - Branch per change: `feat/…`, `fix/…`, `content/…`. Open a pull request; CI (`.github/workflows/ci.yml`) must be green before merge.
 - Commit messages: short imperative English, e.g. `Add Hindi FAQ section`.
 - Before you stop (or if you're about to run out of limit), commit your work-in-progress to your branch,
