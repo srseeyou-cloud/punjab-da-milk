@@ -32,7 +32,7 @@ To rename the brand, change `name` and `batchPrefix` in `lib/brand.ts`. Nothing 
 - `fssai`: 14-digit FSSAI licence number
 - `farmAddress`
 - `rating` and `families` ("4.9/5 by 15,000+ families"): only show real numbers
-- `social` links
+- `social` links (empty ones are hidden in the footer)
 
 **lib/data.ts**
 - All prices (milk ₹110/₹90 per L, ghee, paneer, dahi), bottle deposits, fat %
