@@ -23,7 +23,7 @@ export const brand = {
   farmAddress: "Farm No. __, Village ______, Tehsil ______, District ______, Punjab 14XXXX",
   // PLACEHOLDER: only publish once you have real reviews to back it
   rating: "4.9",
-  families: "15,000+",
+  families: "10,000+",
   // PLACEHOLDER: add full profile links (e.g. "https://instagram.com/punjabdamilk"). Empty ones are hidden.
   social: {
     instagram: "",

@@ -31,11 +31,12 @@ To rename the brand, change `name` and `batchPrefix` in `lib/brand.ts`. Nothing 
 - `email` (hello@punjabdamilk.com is set, but needs a mailbox: Zoho Mail free plan or Google Workspace)
 - `fssai`: 14-digit FSSAI licence number
 - `farmAddress`
-- `rating` and `families` ("4.9/5 by 15,000+ families"): only show real numbers
+- `rating` and `families` ("4.9/5 by 10,000+ families", also shown in the trust counters): only show real numbers
 - `social` links (empty ones are hidden in the footer)
 
 **lib/data.ts**
-- All prices (milk ₹110/₹90 per L, ghee, paneer, dahi), bottle deposits, fat %
+- All prices (milk ₹110/₹90 per L, ghee, paneer, dahi, lassi), bottle deposits, fat %
+- `images` and product `image`: Unsplash stock photos. Swap in real photos of your own farm, cattle and products
 - `batches`: demo lab reports. Connect to the real lab system or remove the sample codes
 - `testimonials`: invented names and quotes. Replace with real customers (with permission). The nutritionist quote must come from a real professional
 - `pincodes`: real serviceable areas

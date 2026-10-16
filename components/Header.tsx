@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Menu, MessageCircle, ShoppingBasket, Truck, X } from "lucide-react";
+import { Menu, MessageCircle, ShoppingBasket, X } from "lucide-react";
 import { brand, waLink } from "@/lib/brand";
 import { Logo } from "./Illustrations";
 import { useBasket } from "./BasketContext";
@@ -30,15 +30,14 @@ export function Header() {
     <header className="sticky top-0 z-50">
       <div className="bg-forest text-cream">
         <p className="wrap flex items-center justify-center gap-2 py-2 text-center text-[13px] font-medium">
-          <Truck className="h-4 w-4 shrink-0 text-ghee-light" aria-hidden />
-          <span>
-            <span className="hidden sm:inline">Delivering fresh</span>
-            <span className="sm:hidden">Fresh</span> before {brand.deliveryCutoff}
+          <span aria-hidden>🥛</span>
+          <a href="#plan" className="hover:text-ghee-light">
+            <span className="font-semibold text-ghee-light">First Trial Pack FREE</span>
+            <span className="hidden sm:inline"> on your 1st Monthly Subscription</span>
             <span className="mx-2 text-cream/40">|</span>
-            <a href="#plan" className="underline decoration-ghee-light/60 underline-offset-4 hover:text-ghee-light">
-              <span className="hidden sm:inline">Get a </span>3-Day Trial<span className="hidden sm:inline"> Pack</span> @ ₹{brand.trialPrice}
-            </a>
-          </span>
+            <span className="sm:hidden">Before {brand.deliveryCutoff}</span>
+            <span className="hidden sm:inline">Delivered Before {brand.deliveryCutoff} Guaranteed!</span>
+          </a>
         </p>
       </div>
 

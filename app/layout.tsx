@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     "Fresh, chilled A2 Sahiwal cow and Murrah buffalo milk from Punjab, lab-tested every morning and delivered in glass bottles before 7 AM.",
 };
 
-export const viewport: Viewport = { themeColor: "#1B4332" };
+export const viewport: Viewport = { themeColor: "#1B5E20" };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

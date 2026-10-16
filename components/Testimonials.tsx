@@ -18,7 +18,7 @@ export function Testimonials() {
       <div className="wrap">
         <div className="flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-end">
           <div className="max-w-2xl">
-            <p className="eyebrow">Families who switched</p>
+            <p className="eyebrow">Saade parivaar · Families who switched</p>
             <h2 className="h2 mt-3">&ldquo;Bilkul ghar ka doodh.&rdquo; Their words, not ours.</h2>
           </div>
           <div className="flex items-center gap-4 rounded-2xl border border-forest/10 bg-white px-5 py-4 shadow-soft">
@@ -66,17 +66,28 @@ export function Testimonials() {
             </li>
           ))}
           {quotes.map((t) => (
-            <li key={t.name} className="rounded-[1.75rem] border border-forest/10 bg-cream-200 p-6">
+            <li
+              key={t.name}
+              className="flex flex-col rounded-[1.75rem] border border-forest/10 bg-cream-200 p-6 transition duration-500 hover:-translate-y-1.5 hover:shadow-lift"
+            >
               <span className="flex text-ghee" aria-hidden>
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star key={i} className="h-3.5 w-3.5 fill-current" />
                 ))}
               </span>
-              <p className="mt-3 leading-relaxed text-earth">&ldquo;{t.quote}&rdquo;</p>
-              <p className="mt-4 text-sm">
-                <b className="text-forest">{t.name}</b>
-                <span className="text-earth/60"> · {t.role}</span>
-              </p>
+              <p className="mt-3 flex-1 leading-relaxed text-earth">&ldquo;{t.quote}&rdquo;</p>
+              <div className="mt-5 flex items-center gap-3">
+                <span
+                  className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-forest font-semibold text-ghee-light"
+                  aria-hidden
+                >
+                  {initials(t.name) || "CN"}
+                </span>
+                <span className="text-sm">
+                  <b className="block text-forest">{t.name}</b>
+                  <span className="text-earth/60">{t.role}</span>
+                </span>
+              </div>
             </li>
           ))}
         </ul>
