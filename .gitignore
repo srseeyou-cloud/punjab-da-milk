@@ -9,3 +9,4 @@ out/
 npm-debug.log*
 preview/.bundle.*
 preview/index.html
+.netlify
