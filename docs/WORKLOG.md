@@ -1,0 +1,10 @@
+# Work log
+
+Newest at the top. One entry per working session, by any person or AI tool.
+Format: `YYYY-MM-DD · tool · branch` then what changed and what's left.
+
+## 2026-10-16 · Claude · main
+- Built the full one-page site (hero, plan calculator, products, purity promise, journey, batch tracer, reviews, FAQ, footer).
+- Renamed brand to Punjab Da Milk, batch prefix PDM. Domain punjabdamilk.com set in `lib/brand.ts`, plus sitemap/robots.
+- Added AGENTS.md / CLAUDE.md / GEMINI.md, CI build check, PR template.
+- **Left to do:** replace every PLACEHOLDER (see README "Replace before launch"), set up Vercel + DNS, set up mailbox for hello@punjabdamilk.com.

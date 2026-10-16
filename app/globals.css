@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; scroll-padding-top: 7rem; }
+  body { @apply bg-cream font-sans text-ink antialiased; }
+  h1, h2, h3 { text-wrap: balance; }
+  :focus-visible { @apply outline-none ring-2 ring-ghee ring-offset-2 ring-offset-cream; }
+}
+
+@layer components {
+  .wrap { @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8; }
+  .eyebrow { @apply text-xs font-semibold uppercase tracking-[0.16em] text-forest-600; }
+  .h2 { @apply font-display text-4xl leading-[1.08] text-forest sm:text-5xl; }
+  .btn-primary { @apply inline-flex items-center justify-center gap-2 rounded-full bg-forest px-6 py-3.5 font-semibold text-cream shadow-soft transition duration-300 hover:-translate-y-0.5 hover:bg-forest-600 hover:shadow-lift; }
+  .btn-ghost { @apply inline-flex items-center justify-center gap-2 rounded-full border border-forest/20 bg-white/50 px-6 py-3.5 font-semibold text-forest transition duration-300 hover:-translate-y-0.5 hover:border-forest/40 hover:bg-white; }
+  .btn-gold { @apply inline-flex items-center justify-center gap-2 rounded-full bg-ghee-light px-6 py-3.5 font-semibold text-forest transition duration-300 hover:-translate-y-0.5 hover:bg-ghee hover:shadow-lift; }
+  .num { font-variant-numeric: tabular-nums; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
