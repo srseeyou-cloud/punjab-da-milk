@@ -12,6 +12,7 @@ Several different AI tools work on this repo, one after another. Read this file 
 ```bash
 npm install          # Node 22 (see .nvmrc)
 npm run dev          # http://localhost:3000
+npm run typecheck    # quick TypeScript check
 npm run build        # MUST pass before every commit (also type-checks)
 npm run preview      # optional: single-file preview at preview/index.html
 ```

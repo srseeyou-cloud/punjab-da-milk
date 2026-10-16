@@ -6,6 +6,12 @@ import { brand, waLink } from "@/lib/brand";
 import { pincodes } from "@/lib/data";
 import { Logo } from "./Illustrations";
 
+const socials = [
+  { href: brand.social.instagram, icon: Instagram, label: "Instagram" },
+  { href: brand.social.facebook, icon: Facebook, label: "Facebook" },
+  { href: brand.social.youtube, icon: Youtube, label: "YouTube" },
+].filter((s) => s.href);
+
 export function Footer() {
   const [pin, setPin] = useState("");
   const [result, setResult] = useState<null | { ok: boolean; text: string }>(null);
@@ -102,13 +108,11 @@ export function Footer() {
             </p>
           )}
 
+          {socials.length > 0 && (
+            <>
           <p className="eyebrow mt-10 !text-ghee-light">Follow the farm</p>
           <ul className="mt-4 flex gap-3">
-            {[
-              { href: brand.social.instagram, icon: Instagram, label: "Instagram" },
-              { href: brand.social.facebook, icon: Facebook, label: "Facebook" },
-              { href: brand.social.youtube, icon: Youtube, label: "YouTube" },
-            ].map(({ href, icon: Icon, label }) => (
+            {socials.map(({ href, icon: Icon, label }) => (
               <li key={label}>
                 <a
                   href={href}
@@ -122,6 +126,8 @@ export function Footer() {
               </li>
             ))}
           </ul>
+            </>
+          )}
         </div>
       </div>
 

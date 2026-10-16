@@ -24,7 +24,7 @@ export function Testimonials() {
           <div className="flex items-center gap-4 rounded-2xl border border-forest/10 bg-white px-5 py-4 shadow-soft">
             <span className="num font-display text-5xl text-forest">{brand.rating}</span>
             <span>
-              <span className="flex text-ghee" aria-label={`${brand.rating} out of 5 stars`}>
+              <span className="flex text-ghee" role="img" aria-label={`${brand.rating} out of 5 stars`}>
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star key={i} className="h-4 w-4 fill-current" aria-hidden />
                 ))}
@@ -43,13 +43,13 @@ export function Testimonials() {
               className={`group relative flex min-h-[26rem] flex-col justify-between overflow-hidden rounded-[1.75rem] bg-gradient-to-br ${t.tone} p-6 text-cream`}
             >
               <div aria-hidden className="absolute -right-10 -top-10 h-48 w-48 rounded-full bg-cream/10 transition duration-700 group-hover:scale-125" />
-              <button
-                type="button"
-                className="relative grid h-14 w-14 place-items-center rounded-full bg-cream/95 text-forest shadow-lift transition group-hover:scale-110"
-                aria-label={`Play video review from ${t.name}`}
-              >
-                <Play className="ml-0.5 h-5 w-5 fill-current" />
-              </button>
+              {/* Video reviews are not recorded yet: show a static badge instead of a play button that does nothing. */}
+              <span className="relative inline-flex items-center gap-2 self-start rounded-full bg-cream/95 py-1.5 pl-1.5 pr-3.5 text-xs font-semibold text-forest shadow-lift">
+                <span className="grid h-7 w-7 place-items-center rounded-full bg-forest text-cream" aria-hidden>
+                  <Play className="ml-0.5 h-3.5 w-3.5 fill-current" />
+                </span>
+                Video review coming soon
+              </span>
               <div className="relative">
                 <Quote className="h-7 w-7 text-ghee-light" aria-hidden />
                 <p className="mt-3 font-display text-xl leading-snug sm:text-2xl">{t.quote}</p>

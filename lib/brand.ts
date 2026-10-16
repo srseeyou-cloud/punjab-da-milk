@@ -24,11 +24,11 @@ export const brand = {
   // PLACEHOLDER: only publish once you have real reviews to back it
   rating: "4.9",
   families: "15,000+",
-  // PLACEHOLDER
+  // PLACEHOLDER: add full profile links (e.g. "https://instagram.com/punjabdamilk"). Empty ones are hidden.
   social: {
-    instagram: "https://instagram.com/",
-    facebook: "https://facebook.com/",
-    youtube: "https://youtube.com/",
+    instagram: "",
+    facebook: "",
+    youtube: "",
   },
   deliveryCutoff: "7:00 AM",
   trialPrice: 99,
