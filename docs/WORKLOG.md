@@ -13,3 +13,7 @@ Format: `YYYY-MM-DD · tool · branch` then what changed and what's left.
 - Renamed brand to Punjab Da Milk, batch prefix PDM. Domain punjabdamilk.com set in `lib/brand.ts`, plus sitemap/robots.
 - Added AGENTS.md / CLAUDE.md / GEMINI.md, CI build check, PR template.
 - **Left to do:** replace every PLACEHOLDER (see README "Replace before launch"), set up Vercel + DNS, set up mailbox for hello@punjabdamilk.com.
+
+## 2026-10-16 · Claude · docs/netlify-live
+- First Netlify production deploy of `main` succeeded (Sourav's Netlify account, free plan). Every merge to `main` now auto-deploys.
+- **Left to do:** connect punjabdamilk.com in Netlify Domain management + registrar DNS, replace PLACEHOLDERs (WhatsApp, FSSAI first).
